@@ -1,46 +1,37 @@
 /* ==========================================================================
    ALMENDROS COFFEE CO. — CATIMOR NATURAL
-   Sistema de diseño editorial de afiche ilustrado (mobile-first).
-   Paleta extraída de la etiqueta y el sticker de Catimor Natural:
-   naranja de amanecer, azul petróleo, crema cálido y café oscuro.
+   Estética limpia y moderna inspirada en la página de producto Catimor
+   (blanco, crema/ámbar cálido y espresso profundo) con el oficio editorial
+   de Almendros Coffee Co.
    ========================================================================== */
 
 :root {
-  /* Paleta oficial extraída del arte de Catimor Natural */
-  --cream-bg: #F6EFE2;
-  --cream-warm: #EDE0CA;
-  --cream-deep: #E2CEAE;
-  --cream-card: #FCF8F1;
-  --white-mat: #FFFFFF;
-
+  --bg-white: #FFFFFF;
+  --amber-50: #FFFBEB;
+  --orange-50: #FFF7ED;
+  --amber-100: #FEF3C7;
+  --amber-200: #FDE68A;
+  --amber-600: #D97706;
   --sunrise-orange: #EE6A0B;
-  --sunrise-bright: #F78A22;
-  --sunrise-deep: #B84304;
+  --sunrise-deep: #B45309;
+  --amber-900: #78350F;
+  --amber-950: #451A03;
+  --espresso-footer: #2A1205;
 
   --petroleum-deep: #0B333E;
-  --petroleum-mid: #114D5C;
-  --petroleum-dark: #07222A;
+  --ink-primary: #29160A;
+  --ink-secondary: #5C3D28;
+  --ink-muted: #7C5B44;
 
-  --coffee-dark: #24140D;
-  --espresso-footer: #190D08;
-  --ink-primary: #1F130D;
-  --ink-secondary: #513B2F;
-  --ink-muted: #6E5648;
+  --border-warm: rgba(120, 53, 15, 0.16);
+  --shadow-card: 0 20px 44px -14px rgba(69, 26, 3, 0.16), 0 4px 12px rgba(69, 26, 3, 0.06);
+  --shadow-soft: 0 10px 26px -10px rgba(69, 26, 3, 0.12);
 
-  /* Bordes y sombras */
-  --border-ink: rgba(36, 20, 13, 0.2);
-  --border-ink-strong: #24140D;
-  --shadow-card: 0 22px 46px -14px rgba(25, 13, 8, 0.25), 0 4px 14px rgba(25, 13, 8, 0.08);
-  --shadow-soft: 0 12px 28px -10px rgba(25, 13, 8, 0.14);
-
-  /* Tipografía */
   --font-serif: "Fraunces", Georgia, "Times New Roman", serif;
   --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-  /* Contenedor y radios */
   --container-max: 1120px;
   --radius-card: 20px;
-  --radius-sm: 10px;
 }
 
 *,
@@ -57,13 +48,12 @@ html {
 
 body {
   margin: 0;
-  background-color: var(--cream-bg);
+  background-color: var(--bg-white);
   color: var(--ink-primary);
   font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.65;
   overflow-x: hidden;
-  position: relative;
 }
 
 img {
@@ -76,7 +66,9 @@ a {
   color: inherit;
 }
 
-button {
+button,
+input,
+select {
   font-family: inherit;
 }
 
@@ -85,14 +77,13 @@ button {
   outline-offset: 3px;
 }
 
-/* Skip link accesible */
 .skip-link {
   position: absolute;
   left: -9999px;
   top: 12px;
   z-index: 1000;
-  background: var(--coffee-dark);
-  color: var(--cream-card);
+  background: var(--amber-950);
+  color: #FFFFFF;
   padding: 0.75rem 1.25rem;
   border-radius: 8px;
   font-weight: 700;
@@ -103,16 +94,6 @@ button {
   left: 12px;
 }
 
-/* Textura discreta de papel de afiche */
-.paper-grain {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 50;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
 .container {
   width: 100%;
   max-width: var(--container-max);
@@ -120,17 +101,21 @@ button {
   padding-inline: 1.25rem;
 }
 
+.container-narrow {
+  max-width: 860px;
+}
+
 /* ==========================================================================
-   HEADER Y NAVEGACIÓN POR ANCLAS
+   HEADER Y NAVEGACIÓN
    ========================================================================== */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(246, 239, 226, 0.94);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1.5px solid var(--border-ink);
+  border-bottom: 1px solid var(--border-warm);
 }
 
 .header-inner {
@@ -160,10 +145,10 @@ button {
   min-height: 44px;
   min-width: 44px;
   padding: 0.45rem 0.9rem;
-  border: 1.5px solid var(--coffee-dark);
+  border: 1px solid var(--border-warm);
   border-radius: 999px;
-  background: var(--cream-card);
-  color: var(--coffee-dark);
+  background: var(--amber-50);
+  color: var(--amber-950);
   font-weight: 700;
   font-size: 0.85rem;
   cursor: pointer;
@@ -199,8 +184,8 @@ button {
   top: 100%;
   left: 0;
   right: 0;
-  background: var(--cream-card);
-  border-bottom: 2px solid var(--coffee-dark);
+  background: var(--bg-white);
+  border-bottom: 1px solid var(--border-warm);
   box-shadow: var(--shadow-soft);
   padding: 1rem 1.25rem 1.35rem;
 }
@@ -215,47 +200,49 @@ button {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 .nav-link {
   display: flex;
   align-items: center;
   min-height: 44px;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 0.8rem;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.96rem;
+  font-size: 0.94rem;
   color: var(--ink-primary);
-  border-radius: 8px;
+  border-radius: 10px;
   transition: background-color 0.18s ease, color 0.18s ease;
 }
 
 .nav-link:hover {
-  background: var(--cream-warm);
+  background: var(--amber-50);
+  color: var(--amber-900);
 }
 
 .nav-link-cta {
   margin-top: 0.35rem;
-  background: var(--sunrise-orange);
+  background: var(--amber-900);
   color: #FFFFFF;
   justify-content: center;
   font-weight: 700;
 }
 
 .nav-link-cta:hover {
-  background: var(--sunrise-deep);
+  background: var(--amber-950);
+  color: #FFFFFF;
 }
 
 /* ==========================================================================
-   TIPOGRAFÍA Y BOTONES COMPARTIDOS
+   TIPOGRAFÍA Y BOTONES
    ========================================================================== */
 .section {
   padding-block: 3.75rem;
 }
 
 .section-header {
-  margin-bottom: 2.25rem;
+  margin-bottom: 2rem;
 }
 
 .section-header.centered {
@@ -265,27 +252,27 @@ button {
 }
 
 .section-eyebrow {
-  margin: 0 0 0.55rem;
+  margin: 0 0 0.5rem;
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--sunrise-deep);
+  color: var(--amber-600);
 }
 
 .section-title {
-  margin: 0 0 0.9rem;
+  margin: 0 0 0.75rem;
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 5.2vw, 2.95rem);
+  font-size: clamp(1.95rem, 5vw, 2.75rem);
   font-weight: 800;
-  line-height: 1.08;
+  line-height: 1.1;
   letter-spacing: -0.015em;
-  color: var(--coffee-dark);
+  color: var(--amber-950);
 }
 
 .section-lead {
   margin: 0;
-  font-size: 1.04rem;
+  font-size: 1.03rem;
   color: var(--ink-secondary);
 }
 
@@ -295,14 +282,14 @@ button {
   justify-content: center;
   gap: 0.55rem;
   min-height: 48px;
-  padding: 0.78rem 1.4rem;
+  padding: 0.78rem 1.45rem;
   border-radius: 999px;
   font-weight: 700;
   font-size: 0.95rem;
   text-decoration: none;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  transition: transform 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
 }
 
 .btn:active {
@@ -313,49 +300,45 @@ button {
   width: 100%;
 }
 
-.btn-accent {
-  background: var(--sunrise-orange);
+.btn-primary {
+  background: var(--amber-900);
   color: #FFFFFF;
-  border-color: var(--coffee-dark);
-  box-shadow: 0 4px 0 var(--coffee-dark);
+  box-shadow: 0 8px 20px -6px rgba(120, 53, 15, 0.45);
 }
 
-.btn-accent:hover {
-  background: var(--sunrise-deep);
+.btn-primary:hover {
+  background: var(--amber-950);
   transform: translateY(-1px);
 }
 
 .btn-outline {
-  background: var(--cream-card);
-  color: var(--coffee-dark);
-  border-color: var(--coffee-dark);
+  background: var(--bg-white);
+  color: var(--amber-950);
+  border-color: var(--amber-200);
 }
 
 .btn-outline:hover {
-  background: var(--cream-warm);
+  background: var(--amber-50);
+  border-color: var(--amber-600);
 }
 
-.btn-whatsapp {
-  background: var(--sunrise-orange);
-  color: #FFFFFF;
-  border-color: var(--coffee-dark);
-  box-shadow: 0 4px 0 var(--coffee-dark);
+.btn-secondary-amber {
+  background: var(--amber-950);
+  color: var(--amber-100);
 }
 
-.btn-whatsapp:hover {
-  background: var(--sunrise-deep);
-  transform: translateY(-1px);
+.btn-secondary-amber:hover {
+  background: var(--amber-900);
 }
 
 .btn-secondary-brand {
   background: transparent;
-  color: var(--petroleum-deep);
-  border-color: var(--petroleum-deep);
+  color: var(--amber-100);
+  border-color: rgba(254, 243, 199, 0.45);
 }
 
 .btn-secondary-brand:hover {
-  background: var(--petroleum-deep);
-  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .btn-icon {
@@ -363,21 +346,18 @@ button {
 }
 
 /* ==========================================================================
-   SECCIÓN 1 — PORTADA (MOBILE-FIRST)
+   SECCIÓN 1 — PORTADA
    ========================================================================== */
 .hero-section {
-  padding-block: 1.65rem 3.25rem;
-  background:
-    radial-gradient(circle at 85% 15%, rgba(238, 106, 11, 0.12), transparent 46%),
-    radial-gradient(circle at 12% 85%, rgba(11, 51, 62, 0.08), transparent 45%),
-    var(--cream-bg);
-  border-bottom: 1.5px solid var(--border-ink);
+  padding-block: 1.75rem 3.5rem;
+  background: linear-gradient(180deg, var(--amber-50) 0%, var(--orange-50) 55%, var(--bg-white) 100%);
+  border-bottom: 1px solid var(--border-warm);
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 1.35rem;
+  gap: 1.4rem;
   align-items: center;
 }
 
@@ -392,7 +372,7 @@ button {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.45rem;
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.7rem;
   font-size: 0.76rem;
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -401,40 +381,41 @@ button {
 }
 
 .kicker-brand {
-  color: var(--coffee-dark);
+  color: var(--amber-950);
 }
 
 .availability-pill {
   display: inline-flex;
   align-items: center;
-  padding: 0.2rem 0.65rem;
+  padding: 0.22rem 0.7rem;
   border-radius: 999px;
-  background: var(--petroleum-deep);
-  color: #FAF4E8;
+  background: var(--amber-100);
+  color: var(--amber-950);
+  border: 1px solid var(--amber-200);
   font-size: 0.72rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
 }
 
 .availability-pill.is-soldout {
-  background: var(--coffee-dark);
-  color: var(--sunrise-bright);
+  background: var(--amber-950);
+  color: var(--amber-100);
 }
 
 .hero-title {
   margin: 0 0 0.35rem;
   font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 9vw, 4.15rem);
+  font-size: clamp(2.45rem, 9vw, 4.25rem);
   font-weight: 800;
   line-height: 0.98;
   letter-spacing: -0.02em;
-  color: var(--coffee-dark);
+  color: var(--amber-950);
 }
 
 .hero-subtitle {
   margin: 0 0 0.45rem;
-  font-size: clamp(1.05rem, 3.2vw, 1.28rem);
+  font-size: clamp(1.08rem, 3.2vw, 1.3rem);
   font-weight: 800;
-  color: var(--sunrise-deep);
+  color: var(--sunrise-orange);
 }
 
 .hero-specs {
@@ -458,10 +439,10 @@ button {
 }
 
 .poster-mat {
-  background: var(--white-mat);
+  background: var(--bg-white);
   padding: 8px;
-  border-radius: 18px;
-  border: 2px solid var(--coffee-dark);
+  border-radius: 20px;
+  border: 1px solid var(--amber-200);
   box-shadow: var(--shadow-card);
 }
 
@@ -469,7 +450,7 @@ button {
   width: 100%;
   aspect-ratio: 1024 / 980;
   object-fit: contain;
-  border-radius: 11px;
+  border-radius: 13px;
 }
 
 .poster-caption {
@@ -483,37 +464,12 @@ button {
   color: var(--ink-muted);
 }
 
-.ink-rule-ornament {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.85rem;
-}
-
-.rule-line {
-  flex: 1;
-  height: 1.5px;
-  background: var(--border-ink);
-}
-
-.rule-badge {
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  color: var(--sunrise-deep);
-  padding: 0.15rem 0.55rem;
-  border: 1px solid var(--sunrise-orange);
-  border-radius: 999px;
-}
-
 .hero-storyline {
-  margin: 0 0 1.25rem;
-  font-family: var(--font-serif);
-  font-size: clamp(1.22rem, 3.6vw, 1.52rem);
+  margin: 0 0 1.35rem;
+  font-size: clamp(1.12rem, 3.2vw, 1.32rem);
   font-weight: 600;
-  font-style: italic;
-  line-height: 1.35;
-  color: var(--coffee-dark);
+  line-height: 1.48;
+  color: var(--amber-900);
 }
 
 .hero-actions {
@@ -523,323 +479,254 @@ button {
 }
 
 /* ==========================================================================
-   SECCIÓN 2 — UNA SOLA VARIEDAD
+   SECCIÓN 2 — PESTAÑAS (CARACTERÍSTICAS / HISTORIA / SOSTENIBILIDAD)
    ========================================================================== */
-.section-variety {
-  background: var(--cream-warm);
-  border-bottom: 1.5px solid var(--border-ink);
+.section-tabs {
+  background: var(--bg-white);
+  border-bottom: 1px solid var(--border-warm);
 }
 
-.variety-triptych {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 1.15rem;
+.tabs-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
 }
 
-.poster-spec-card {
-  background: var(--cream-card);
-  border: 2px solid var(--coffee-dark);
+.tab-btn {
+  min-height: 44px;
+  padding: 0.55rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--amber-200);
+  background: var(--amber-50);
+  color: var(--amber-900);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.tab-btn:hover {
+  background: var(--amber-100);
+}
+
+.tab-btn.is-active {
+  background: var(--amber-900);
+  color: #FFFFFF;
+  border-color: var(--amber-900);
+}
+
+.tab-card {
+  background: var(--bg-white);
+  border: 1px solid var(--amber-200);
   border-radius: var(--radius-card);
-  padding: 1.5rem 1.35rem;
+  padding: clamp(1.4rem, 3.5vw, 2.25rem);
   box-shadow: var(--shadow-soft);
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 1.5rem;
 }
 
-.poster-spec-card-highlight {
-  background: var(--petroleum-deep);
-  color: #FAF4E8;
-  border-color: var(--coffee-dark);
-}
-
-.spec-card-tag {
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: var(--sunrise-deep);
-}
-
-.poster-spec-card-highlight .spec-card-tag {
-  color: var(--sunrise-bright);
-}
-
-.spec-card-value {
-  margin: 0;
+.tab-subheading {
+  margin: 0 0 0.65rem;
   font-family: var(--font-serif);
-  font-size: clamp(1.75rem, 4.5vw, 2.25rem);
-  font-weight: 800;
-  line-height: 1.1;
-  color: var(--coffee-dark);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--amber-950);
 }
 
-.poster-spec-card-highlight .spec-card-value {
-  color: #FFFFFF;
+.tab-highlight {
+  margin: 0 0 0.25rem;
+  font-weight: 700;
+  color: var(--amber-900);
 }
 
-.spec-card-desc {
-  margin: 0.25rem 0 0;
-  font-size: 0.94rem;
+.tab-subnote {
+  margin: 0 0 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--amber-600);
+}
+
+.tab-text {
+  margin: 0;
   color: var(--ink-secondary);
+  line-height: 1.7;
 }
 
-.poster-spec-card-highlight .spec-card-desc {
-  color: rgba(246, 239, 226, 0.88);
+.flavor-pills {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.flavor-pill {
+  padding: 0.48rem 0.95rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--amber-50), var(--orange-50));
+  border: 1px solid var(--amber-200);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--amber-950);
+}
+
+.storage-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--ink-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.storage-list li::marker {
+  color: var(--amber-600);
 }
 
 /* ==========================================================================
-   SECCIÓN 3 — PERFIL DE TAZA
+   SECCIÓN 3 — ESPECIFICACIONES Y TRAZABILIDAD
    ========================================================================== */
-.section-cup-profile {
-  background: var(--cream-bg);
-  border-bottom: 1.5px solid var(--border-ink);
+.section-specs {
+  background: var(--bg-white);
 }
 
-.cup-editorial-frame {
-  background: var(--cream-card);
-  border: 2px solid var(--coffee-dark);
-  border-radius: 24px;
-  padding: clamp(1.5rem, 4vw, 2.85rem);
-  box-shadow: var(--shadow-card);
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-bottom: 1.75rem;
 }
 
-.cup-frame-header {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.sensory-statement {
-  margin: 0 auto 1.75rem;
-  max-width: 740px;
-  text-align: center;
-  font-family: var(--font-serif);
-  font-size: clamp(1.22rem, 3vw, 1.6rem);
-  font-weight: 500;
-  line-height: 1.48;
-  color: var(--coffee-dark);
-}
-
-.roast-seal-bar {
+.spec-card {
+  background: linear-gradient(135deg, var(--amber-50) 0%, var(--orange-50) 100%);
+  border: 1px solid var(--amber-200);
+  border-radius: 16px;
+  padding: 1.2rem 1.15rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.85rem;
-  padding: 1.15rem 1.35rem;
-  margin-bottom: 2rem;
-  background: var(--cream-warm);
-  border: 1.5px solid var(--coffee-dark);
-  border-radius: 16px;
-  text-align: center;
+  gap: 0.3rem;
 }
 
-.roast-seal {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.4rem 0.95rem;
-  border-radius: 999px;
-  background: var(--coffee-dark);
-  color: #FAF4E8;
-}
-
-.roast-seal-label {
+.spec-label {
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--sunrise-bright);
+  color: var(--amber-600);
 }
 
-.roast-seal-value {
+.spec-value {
   font-family: var(--font-serif);
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   font-weight: 700;
+  color: var(--amber-950);
 }
 
-.roast-note {
-  margin: 0;
-  font-size: 0.95rem;
-  color: var(--ink-secondary);
-}
-
-.sensory-pillars {
+.farm-dossier-strip {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 1rem;
-}
-
-.sensory-pillar {
-  background: var(--cream-bg);
-  border: 1.5px solid var(--border-ink);
-  border-radius: 16px;
-  padding: 1.25rem;
-}
-
-.pillar-num {
-  display: inline-block;
-  font-family: var(--font-serif);
-  font-size: 0.88rem;
-  font-weight: 800;
-  color: var(--sunrise-deep);
-  margin-bottom: 0.35rem;
-}
-
-.pillar-title {
-  margin: 0 0 0.35rem;
-  font-family: var(--font-serif);
-  font-size: 1.22rem;
-  font-weight: 700;
-  color: var(--coffee-dark);
-}
-
-.pillar-text {
-  margin: 0;
-  font-size: 0.92rem;
-  color: var(--ink-secondary);
-}
-
-/* ==========================================================================
-   SECCIÓN 4 — NUESTRA FINCA
-   ========================================================================== */
-.section-farm {
-  background: var(--cream-bg);
-}
-
-.farm-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 2.25rem;
+  gap: 1.5rem;
   align-items: center;
+  background: var(--amber-50);
+  border: 1px solid var(--amber-200);
+  border-radius: var(--radius-card);
+  padding: 1.35rem 1.5rem;
 }
 
-.farm-narrative,
-.farm-dossier-card {
-  min-width: 0;
-}
-
-.farm-lead {
-  margin: 0 0 1.25rem;
-  font-size: 1.02rem;
-  color: var(--ink-secondary);
-}
-
-.farm-origin-seal {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin: 0 0 1.5rem;
-  padding: 0.55rem 0.95rem;
-  background: var(--cream-warm);
-  border: 1.5px solid var(--coffee-dark);
-  border-radius: 10px;
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--coffee-dark);
-}
-
-.seal-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--sunrise-orange);
-  flex-shrink: 0;
-}
-
-.botanical-engraving-figure {
-  margin: 0.5rem auto 0;
-  max-width: 230px;
-  opacity: 0.92;
+.botanical-strip-art {
+  margin: 0 auto;
+  max-width: 140px;
 }
 
 .botanical-branch-img {
   width: 100%;
   height: auto;
+  opacity: 0.9;
 }
 
-.farm-dossier-card {
-  background: var(--cream-card);
-  border: 2px solid var(--coffee-dark);
-  border-radius: var(--radius-card);
-  padding: 7px;
-  box-shadow: var(--shadow-soft);
-}
-
-.dossier-inner {
-  border: 1px solid var(--border-ink);
-  border-radius: 14px;
-  padding: 1.5rem 1.35rem;
-}
-
-.dossier-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  margin-bottom: 1.15rem;
-}
-
-.editorial-tag {
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: var(--sunrise-deep);
-}
-
-.dossier-stamp {
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  color: var(--petroleum-deep);
-}
-
-.origin-ledger {
+.dossier-inline-grid {
   margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.5rem;
 }
 
-.ledger-item {
-  padding-block: 0.75rem;
-  border-top: 1px solid rgba(36, 20, 13, 0.14);
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
-.ledger-item dt {
+.dossier-inline-item dt {
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink-muted);
 }
 
-.ledger-item dd {
-  margin: 0;
+.dossier-inline-item dd {
+  margin: 0.15rem 0 0;
   font-family: var(--font-serif);
-  font-size: 1.16rem;
+  font-size: 1.08rem;
   font-weight: 700;
-  color: var(--coffee-dark);
-}
-
-.dossier-footer {
-  margin-top: 1rem;
-  padding-top: 0.85rem;
-  border-top: 1.5px solid var(--coffee-dark);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--sunrise-deep);
-  text-align: center;
+  color: var(--amber-950);
 }
 
 /* ==========================================================================
-   SECCIÓN 5 — UNA HISTORIA ILUSTRADA
+   SECCIÓN 4 — MÉTODOS DE PREPARACIÓN
+   ========================================================================== */
+.section-brewing {
+  background: linear-gradient(135deg, var(--amber-50) 0%, var(--orange-50) 100%);
+  border-top: 1px solid var(--amber-200);
+  border-bottom: 1px solid var(--amber-200);
+}
+
+.brew-cards-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.15rem;
+  margin-bottom: 2rem;
+}
+
+.brew-card {
+  background: var(--bg-white);
+  border: 1px solid var(--amber-200);
+  border-radius: 18px;
+  padding: 1.5rem 1.35rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.brew-title {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--amber-950);
+}
+
+.brew-recipe {
+  margin: 0 0 0.4rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--amber-900);
+}
+
+.brew-note {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ink-secondary);
+}
+
+.brew-assistant-cta {
+  display: flex;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   SECCIÓN 5 — UNA HISTORIA ILUSTRADA (SIN MARCADORES)
    ========================================================================== */
 .section-illustrated-story {
   background: var(--petroleum-deep);
-  color: var(--cream-bg);
+  color: #FAF4E8;
   border-top: 4px solid var(--sunrise-orange);
   border-bottom: 4px solid var(--sunrise-orange);
 }
@@ -849,15 +736,15 @@ button {
 }
 
 .section-eyebrow-light {
-  color: var(--sunrise-bright);
+  color: var(--amber-200);
 }
 
 .section-title-light {
-  color: #FAF4E8;
+  color: #FFFFFF;
 }
 
 .section-lead-light {
-  color: rgba(246, 239, 226, 0.9);
+  color: rgba(250, 244, 232, 0.9);
   font-size: 1.05rem;
 }
 
@@ -874,7 +761,7 @@ button {
 }
 
 .interactive-card-wrapper {
-  max-width: 520px;
+  max-width: 500px;
   min-width: 0;
   margin: 0 auto;
   width: 100%;
@@ -890,10 +777,9 @@ button {
   text-align: center;
   font-size: 0.82rem;
   font-weight: 600;
-  color: rgba(246, 239, 226, 0.8);
+  color: rgba(250, 244, 232, 0.82);
 }
 
-/* Sticker junto a la ventana */
 .window-sticker-callout {
   margin: 0 0 1.25rem;
   display: flex;
@@ -902,7 +788,7 @@ button {
   padding: 0.9rem;
   border-radius: 16px;
   background: rgba(7, 34, 42, 0.72);
-  border: 1px solid rgba(246, 239, 226, 0.2);
+  border: 1px solid rgba(250, 244, 232, 0.2);
 }
 
 .window-sticker-frame {
@@ -923,15 +809,14 @@ button {
   flex-direction: column;
   gap: 0.2rem;
   font-size: 0.86rem;
-  color: rgba(246, 239, 226, 0.85);
+  color: rgba(250, 244, 232, 0.85);
 }
 
 .window-sticker-caption strong {
-  color: var(--sunrise-bright);
+  color: var(--amber-200);
   font-size: 0.92rem;
 }
 
-/* Acordeón accesible */
 .story-accordion {
   display: flex;
   flex-direction: column;
@@ -941,14 +826,14 @@ button {
 .accordion-item {
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.06);
-  border: 1.5px solid rgba(246, 239, 226, 0.18);
+  border: 1.5px solid rgba(250, 244, 232, 0.18);
   overflow: hidden;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .accordion-item.is-active {
-  background: rgba(238, 106, 11, 0.14);
-  border-color: var(--sunrise-bright);
+  background: rgba(238, 106, 11, 0.16);
+  border-color: var(--amber-200);
 }
 
 .accordion-heading {
@@ -974,7 +859,7 @@ button {
   font-family: var(--font-serif);
   font-size: 0.95rem;
   font-weight: 800;
-  color: var(--sunrise-bright);
+  color: var(--amber-200);
 }
 
 .accordion-title-group {
@@ -993,14 +878,14 @@ button {
 .landmark-sub {
   font-size: 0.78rem;
   font-weight: 600;
-  color: rgba(246, 239, 226, 0.72);
+  color: rgba(250, 244, 232, 0.74);
 }
 
 .accordion-chevron {
   width: 10px;
   height: 10px;
-  border-right: 2px solid var(--sunrise-bright);
-  border-bottom: 2px solid var(--sunrise-bright);
+  border-right: 2px solid var(--amber-200);
+  border-bottom: 2px solid var(--amber-200);
   transform: rotate(45deg);
   transition: transform 0.2s ease;
   margin-right: 4px;
@@ -1018,27 +903,21 @@ button {
   margin: 0;
   font-size: 0.92rem;
   line-height: 1.55;
-  color: rgba(246, 239, 226, 0.9);
+  color: rgba(250, 244, 232, 0.92);
 }
 
 /* ==========================================================================
-   SECCIÓN 6 — LLEVATE TU CATIMOR
+   SECCIÓN 6 — LLEVATE TU CATIMOR + COMPARTIR (ÁMBAR / ESPRESSO)
    ========================================================================== */
 .section-acquire {
-  background:
-    radial-gradient(circle at 18% 28%, rgba(238, 106, 11, 0.09), transparent 50%),
-    var(--cream-bg);
+  background: linear-gradient(135deg, var(--amber-900) 0%, #9A3412 100%);
+  color: #FFFFFF;
 }
 
 .acquire-card {
-  background: var(--cream-card);
-  border: 2px solid var(--coffee-dark);
-  border-radius: 26px;
-  padding: clamp(1.5rem, 4vw, 2.75rem);
-  box-shadow: var(--shadow-card);
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 1.85rem;
+  gap: 2rem;
   align-items: center;
 }
 
@@ -1065,7 +944,7 @@ button {
   aspect-ratio: 1 / 1;
   object-fit: contain;
   border-radius: 24px;
-  box-shadow: 0 18px 34px rgba(25, 13, 8, 0.22);
+  box-shadow: 0 22px 42px rgba(25, 10, 2, 0.42);
 }
 
 .sticker-stage-caption {
@@ -1073,13 +952,21 @@ button {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink-muted);
+  color: var(--amber-100);
+}
+
+.section-acquire .section-eyebrow {
+  color: var(--amber-200);
+}
+
+.section-acquire .section-title {
+  color: #FFFFFF;
 }
 
 .acquire-copy {
-  margin: 0 0 1.35rem;
-  font-size: 1rem;
-  color: var(--ink-secondary);
+  margin: 0 0 1.4rem;
+  font-size: 1.02rem;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .presentations-grid {
@@ -1090,10 +977,11 @@ button {
 }
 
 .presentation-card {
-  background: var(--cream-bg);
-  border: 2px solid var(--coffee-dark);
+  background: var(--bg-white);
+  color: var(--amber-950);
   border-radius: 18px;
-  padding: 1.25rem;
+  padding: 1.3rem;
+  box-shadow: 0 14px 30px rgba(25, 10, 2, 0.25);
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -1110,17 +998,17 @@ button {
   font-family: var(--font-serif);
   font-size: 1.35rem;
   font-weight: 800;
-  color: var(--coffee-dark);
+  color: var(--amber-950);
 }
 
 .presentation-price-tag {
   font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--petroleum-deep);
-  background: var(--cream-warm);
-  padding: 0.22rem 0.6rem;
+  color: var(--amber-900);
+  background: var(--amber-100);
+  padding: 0.22rem 0.65rem;
   border-radius: 999px;
 }
 
@@ -1130,14 +1018,15 @@ button {
   font-size: 2.15rem;
   font-weight: 800;
   line-height: 1;
-  color: var(--sunrise-deep);
+  color: var(--sunrise-orange);
 }
 
 .shipping-callout {
-  padding: 1rem 1.15rem;
+  padding: 0.95rem 1.15rem;
   border-radius: 14px;
-  background: var(--cream-warm);
-  border: 1.5px solid var(--border-ink);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(6px);
   margin-bottom: 1.25rem;
 }
 
@@ -1147,19 +1036,67 @@ button {
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--petroleum-deep);
-  margin-bottom: 0.25rem;
+  color: var(--amber-200);
+  margin-bottom: 0.2rem;
 }
 
 .shipping-text {
   margin: 0;
   font-size: 0.92rem;
-  color: var(--ink-secondary);
+  color: rgba(255, 255, 255, 0.92);
 }
 
-.acquire-secondary-action {
+.acquire-footer-row {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.share-box {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.share-label {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--amber-100);
+}
+
+.btn-share {
+  min-height: 36px;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.14);
+  color: #FFFFFF;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-share:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.btn-share-wa {
+  background: #16A34A;
+  border-color: #16A34A;
+}
+
+.btn-share-wa:hover {
+  background: #15803D;
 }
 
 /* ==========================================================================
@@ -1167,9 +1104,8 @@ button {
    ========================================================================== */
 .site-footer {
   background: var(--espresso-footer);
-  color: var(--cream-bg);
+  color: #FAF4E8;
   padding-block: 3.25rem 2.5rem;
-  border-top: 4px double rgba(238, 106, 11, 0.55);
 }
 
 .footer-card-colophon {
@@ -1197,7 +1133,7 @@ button {
   font-family: var(--font-serif);
   font-style: italic;
   font-size: 1rem;
-  color: rgba(246, 239, 226, 0.85);
+  color: rgba(250, 244, 232, 0.85);
 }
 
 .footer-links {
@@ -1220,14 +1156,14 @@ button {
   padding: 0.75rem 1rem;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(246, 239, 226, 0.18);
+  border: 1px solid rgba(250, 244, 232, 0.16);
   text-decoration: none;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .footer-connect-link:hover {
-  background: rgba(238, 106, 11, 0.16);
-  border-color: var(--sunrise-bright);
+  background: rgba(217, 119, 6, 0.2);
+  border-color: var(--amber-200);
 }
 
 .connect-label {
@@ -1235,13 +1171,13 @@ button {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--sunrise-bright);
+  color: var(--amber-200);
 }
 
 .connect-value {
   font-size: 0.96rem;
   font-weight: 600;
-  color: #FAF4E8;
+  color: #FFFFFF;
 }
 
 .footer-bottom {
@@ -1249,7 +1185,7 @@ button {
   flex-direction: column;
   gap: 0.35rem;
   font-size: 0.84rem;
-  color: rgba(246, 239, 226, 0.72);
+  color: rgba(250, 244, 232, 0.72);
 }
 
 .footer-country,
@@ -1258,7 +1194,135 @@ button {
 }
 
 /* ==========================================================================
-   APARICIÓN SUAVE DE SECCIONES
+   MODAL — ASISTENTE DE PREPARACIÓN
+   ========================================================================== */
+.brew-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(25, 13, 8, 0.65);
+  backdrop-filter: blur(4px);
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+}
+
+.brew-modal-backdrop[hidden] {
+  display: none;
+}
+
+.brew-modal-card {
+  width: 100%;
+  max-width: 460px;
+  background: var(--bg-white);
+  border-radius: 22px;
+  border: 1px solid var(--amber-200);
+  box-shadow: 0 26px 56px rgba(0, 0, 0, 0.35);
+  padding: 1.5rem;
+}
+
+.brew-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.brew-modal-title {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--amber-950);
+}
+
+.brew-modal-sub {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--ink-secondary);
+}
+
+.brew-modal-close {
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--amber-200);
+  background: var(--amber-50);
+  color: var(--amber-950);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.brew-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.calc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.calc-field label {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--amber-950);
+}
+
+.calc-field select,
+.calc-field input[type="number"] {
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--amber-200);
+  background: var(--amber-50);
+  color: var(--amber-950);
+  font-size: 0.96rem;
+  font-weight: 600;
+}
+
+.calc-range-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calc-range-hints {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+}
+
+.calc-result-box {
+  background: linear-gradient(135deg, var(--amber-50), var(--orange-50));
+  border: 1px solid var(--amber-200);
+  border-radius: 14px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.calc-result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.calc-result-row strong {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--amber-950);
+}
+
+/* ==========================================================================
+   REVEAL Y MOTION
    ========================================================================== */
 .js-ready .reveal-section {
   transition: opacity 0.55s ease, transform 0.55s ease;
@@ -1281,7 +1345,6 @@ button {
     transform: none;
   }
   .btn,
-  .landmark-pin span,
   .accordion-chevron {
     transition: none;
   }
@@ -1300,13 +1363,17 @@ button {
 }
 
 @media (min-width: 720px) {
-  .variety-triptych,
-  .sensory-pillars {
+  .specs-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  .roast-seal-bar {
-    flex-direction: row;
-    text-align: left;
+  .brew-cards-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .farm-dossier-strip {
+    grid-template-columns: 150px 1fr;
+  }
+  .dossier-inline-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
@@ -1331,7 +1398,7 @@ button {
   .nav-list {
     flex-direction: row;
     align-items: center;
-    gap: 0.35rem;
+    gap: 0.3rem;
   }
 
   .nav-link-cta {
@@ -1341,7 +1408,7 @@ button {
   }
 
   .section {
-    padding-block: 5.25rem;
+    padding-block: 5rem;
   }
 
   .hero-section {
@@ -1370,11 +1437,6 @@ button {
   .hero-artwork-col {
     grid-column: 2;
     grid-row: 1 / span 2;
-  }
-
-  .farm-layout {
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-    gap: 3rem;
   }
 
   .story-explorer-grid {

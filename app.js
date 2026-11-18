@@ -8,9 +8,6 @@
 
   const cfg = window.CATIMOR_NATURAL_CONFIG;
 
-  /**
-   * Construye el enlace oficial de WhatsApp (wa.me) a partir del número y mensaje configurados.
-   */
   function buildWhatsAppUrl(phone, message) {
     const cleanDigits = String(phone || "").replace(/[^\d]/g, "");
     if (!cleanDigits) return "https://almendroscoffee.com/";
@@ -18,9 +15,6 @@
     return "https://wa.me/" + cleanDigits + query;
   }
 
-  /**
-   * Aplica imágenes, textos, tarjetas y enlaces editables desde config.js.
-   */
   function applyConfiguration(config) {
     if (!config) return;
 
@@ -28,13 +22,16 @@
     const imgs = config.imagenes || {};
     const contacto = config.contacto || {};
     const p = config.producto || {};
-    const varUnica = config.variedadUnica || {};
-    const taza = config.perfilDeTaza || {};
+    const tabs = config.pestanas || {};
+    const car = tabs.caracteristicas || {};
+    const histTab = tabs.historia || {};
+    const sost = tabs.sostenibilidad || {};
     const orig = config.origen || {};
+    const prep = config.preparacion || {};
     const hist = config.historiaIlustrada || {};
     const pres = config.presentaciones || {};
 
-    // Bindings de imágenes centralizadas
+    // Imágenes centralizadas
     if (imgs.logo) {
       document.querySelectorAll('[data-config-img="logo"]').forEach(function (el) {
         el.setAttribute("src", imgs.logo);
@@ -60,7 +57,7 @@
       });
     }
 
-    // Bindings de texto
+    // Textos simples
     const textBindings = {
       marcaUpper: p.marca ? String(p.marca).toUpperCase() : null,
       estadoDisponibilidad: disp.disponible ? disp.etiquetaDisponible : disp.etiquetaAgotado,
@@ -68,30 +65,29 @@
       subtituloProducto: p.subtitulo,
       tuesteProducto: p.tueste,
       categoriaProducto: p.categoria,
-      fraseEntrada: p.fraseEntrada ? "“" + p.fraseEntrada + "”" : null,
+      fraseEntrada: p.fraseEntrada,
       botonHero: p.botonHero,
       botonWhatsapp: p.botonWhatsapp,
 
-      variedadEyebrow: varUnica.eyebrow,
-      variedadTitulo: varUnica.titulo,
-      variedadDescripcion: varUnica.descripcion,
+      procesoTitulo: car.procesoTitulo,
+      procesoTexto: car.procesoTexto,
+      almacenamientoTitulo: car.almacenamientoTitulo,
 
-      tazaEyebrow: taza.eyebrow,
-      tazaTitulo: taza.titulo,
-      descripcionSensorial: taza.descripcionPrincipal ? "“" + taza.descripcionPrincipal + "”" : null,
-      tuesteCorto: p.tuesteCorto,
-      notaTueste: taza.notaTueste,
+      historiaOrigenSub: histTab.subtituloOrigen,
+      historiaTuesteSub: histTab.subtituloTueste,
+      historiaOrigenTexto: histTab.texto,
 
-      origenEyebrow: orig.eyebrow,
-      origenTitulo: orig.titulo,
-      historiaFinca: orig.historiaFinca,
-      declaracionOrigen: orig.declaracionOrigen,
+      sostTitulo: sost.titulo,
+      sostParrafo1: sost.parrafo1,
+      sostParrafo2: sost.parrafo2,
+
       origenFinca: orig.finca,
       origenRegion: orig.region,
       origenProductor: orig.productor,
-      origenAltitud: orig.altitud,
       origenCosecha: orig.cosecha,
-      selloTrazabilidad: orig.selloTrazabilidad,
+
+      prepTitulo: prep.titulo,
+      prepSubtitulo: prep.subtitulo,
 
       historiaEyebrow: hist.eyebrow,
       historiaTitulo: hist.titulo,
@@ -119,69 +115,84 @@
       });
     });
 
-    // Estado visual de disponibilidad
     const availabilityPill = document.getElementById("heroAvailability");
     if (availabilityPill && disp.disponible === false) {
       availabilityPill.classList.add("is-soldout");
     }
 
-    // Ficha editorial de 3 datos (Una sola variedad)
-    const varietyGrid = document.getElementById("varietyTriptych");
-    if (varietyGrid && Array.isArray(varUnica.datos) && varUnica.datos.length > 0) {
-      varietyGrid.innerHTML = "";
-      varUnica.datos.forEach(function (dato, idx) {
-        const card = document.createElement("article");
-        card.className = "poster-spec-card" + (idx === 2 ? " poster-spec-card-highlight" : "");
-
-        const tag = document.createElement("span");
-        tag.className = "spec-card-tag";
-        tag.textContent = "0" + (idx + 1) + " · " + (dato.etiqueta || "");
-
-        const val = document.createElement("h3");
-        val.className = "spec-card-value";
-        val.textContent = dato.valor || "";
-
-        const desc = document.createElement("p");
-        desc.className = "spec-card-desc";
-        desc.textContent = dato.detalle || "";
-
-        card.appendChild(tag);
-        card.appendChild(val);
-        card.appendChild(desc);
-        varietyGrid.appendChild(card);
+    // Notas de sabor (pills)
+    const flavorPills = document.getElementById("flavorPills");
+    if (flavorPills && Array.isArray(car.notasSabor)) {
+      flavorPills.innerHTML = "";
+      car.notasSabor.forEach(function (nota) {
+        const li = document.createElement("li");
+        li.className = "flavor-pill";
+        li.textContent = nota;
+        flavorPills.appendChild(li);
       });
     }
 
-    // Destacados del perfil de taza
-    const pillarsContainer = document.getElementById("sensoryPillars");
-    const numerals = ["I", "II", "III"];
-    if (pillarsContainer && Array.isArray(taza.destacados) && taza.destacados.length > 0) {
-      pillarsContainer.innerHTML = "";
-      taza.destacados.slice(0, 3).forEach(function (attr, idx) {
+    // Almacenamiento
+    const storageList = document.getElementById("storageList");
+    if (storageList && Array.isArray(car.almacenamientoItems)) {
+      storageList.innerHTML = "";
+      car.almacenamientoItems.forEach(function (item) {
+        const li = document.createElement("li");
+        li.textContent = item;
+        storageList.appendChild(li);
+      });
+    }
+
+    // Ficha de 6 especificaciones
+    const specsGrid = document.getElementById("specsGrid");
+    if (specsGrid && Array.isArray(config.especificaciones)) {
+      specsGrid.innerHTML = "";
+      config.especificaciones.forEach(function (spec) {
         const card = document.createElement("div");
-        card.className = "sensory-pillar";
+        card.className = "spec-card";
 
-        const num = document.createElement("span");
-        num.className = "pillar-num";
-        num.setAttribute("aria-hidden", "true");
-        num.textContent = numerals[idx] || String(idx + 1);
+        const label = document.createElement("span");
+        label.className = "spec-label";
+        label.textContent = spec.etiqueta || "";
 
-        const title = document.createElement("h3");
-        title.className = "pillar-title";
-        title.textContent = attr.titulo || "";
+        const val = document.createElement("strong");
+        val.className = "spec-value";
+        val.textContent = spec.valor || "";
 
-        const detail = document.createElement("p");
-        detail.className = "pillar-text";
-        detail.textContent = attr.detalle || "";
-
-        card.appendChild(num);
-        card.appendChild(title);
-        card.appendChild(detail);
-        pillarsContainer.appendChild(card);
+        card.appendChild(label);
+        card.appendChild(val);
+        specsGrid.appendChild(card);
       });
     }
 
-    // Tres momentos del acordeón en Historia Ilustrada
+    // Métodos de preparación
+    const brewGrid = document.getElementById("brewMethodsGrid");
+    if (brewGrid && Array.isArray(prep.metodos)) {
+      brewGrid.innerHTML = "";
+      prep.metodos.forEach(function (m) {
+        const art = document.createElement("article");
+        art.className = "brew-card";
+
+        const h3 = document.createElement("h3");
+        h3.className = "brew-title";
+        h3.textContent = m.nombre || "";
+
+        const recipe = document.createElement("p");
+        recipe.className = "brew-recipe";
+        recipe.textContent = m.receta || "";
+
+        const note = document.createElement("p");
+        note.className = "brew-note";
+        note.textContent = m.nota || "";
+
+        art.appendChild(h3);
+        art.appendChild(recipe);
+        art.appendChild(note);
+        brewGrid.appendChild(art);
+      });
+    }
+
+    // Momentos del acordeón
     if (Array.isArray(hist.momentos)) {
       hist.momentos.forEach(function (mom, idx) {
         const item = document.querySelector('.accordion-item[data-landmark="' + idx + '"]');
@@ -197,7 +208,7 @@
       });
     }
 
-    // Presentaciones y precios de venta (250 g y 500 g)
+    // Presentaciones 250 g y 500 g
     if (Array.isArray(pres.opciones)) {
       pres.opciones.forEach(function (opt) {
         const card = document.querySelector('.presentation-card[data-presentation-id="' + opt.id + '"]');
@@ -205,7 +216,7 @@
         const weightEl = card.querySelector(".presentation-weight");
         const tagEl = card.querySelector(".presentation-price-tag");
         const priceEl = card.querySelector(".presentation-price");
-        const btnEl = card.querySelector("a.btn-whatsapp");
+        const btnEl = card.querySelector("a.btn");
         const btnTextEl = btnEl ? btnEl.querySelector("span") : null;
 
         if (weightEl && opt.tamano) weightEl.textContent = opt.tamano;
@@ -218,7 +229,6 @@
       });
     }
 
-    // Enlaces generales (WhatsApp general, Instagram, Sitio Web)
     if (contacto.whatsappNumero) {
       const waGeneralUrl = buildWhatsAppUrl(contacto.whatsappNumero, contacto.whatsappMensajeGeneral);
       document.querySelectorAll("[data-whatsapp-general]").forEach(function (link) {
@@ -239,9 +249,6 @@
     }
   }
 
-  /**
-   * Menú de navegación móvil accesible.
-   */
   function initNavigation() {
     const toggle = document.getElementById("navToggle");
     const nav = document.getElementById("primaryNav");
@@ -286,54 +293,74 @@
     });
   }
 
-  /**
-   * Acordeón narrativo accesible (Sección 5: Una historia ilustrada).
-   */
+  function initTabs() {
+    const tabBtns = Array.from(document.querySelectorAll(".tab-btn"));
+    const tabPanels = Array.from(document.querySelectorAll(".tab-panel"));
+    if (!tabBtns.length || !tabPanels.length) return;
+
+    function selectTab(tabName) {
+      tabBtns.forEach(function (btn) {
+        const active = btn.getAttribute("data-tab") === tabName;
+        btn.classList.toggle("is-active", active);
+        btn.setAttribute("aria-selected", active ? "true" : "false");
+      });
+
+      tabPanels.forEach(function (panel) {
+        const active = panel.id === "tab-panel-" + tabName;
+        panel.hidden = !active;
+      });
+    }
+
+    tabBtns.forEach(function (btn, idx) {
+      btn.addEventListener("click", function () {
+        selectTab(btn.getAttribute("data-tab"));
+      });
+
+      btn.addEventListener("keydown", function (e) {
+        let nextIdx = null;
+        if (e.key === "ArrowRight") nextIdx = (idx + 1) % tabBtns.length;
+        if (e.key === "ArrowLeft") nextIdx = (idx - 1 + tabBtns.length) % tabBtns.length;
+        if (nextIdx !== null) {
+          e.preventDefault();
+          tabBtns[nextIdx].focus();
+          selectTab(tabBtns[nextIdx].getAttribute("data-tab"));
+        }
+      });
+    });
+  }
+
   function initStoryExplorer() {
     const items = Array.from(document.querySelectorAll(".accordion-item"));
     const triggers = Array.from(document.querySelectorAll(".accordion-trigger"));
-
     if (!items.length || !triggers.length) return;
 
     function activateMoment(indexStr) {
       const targetIdx = String(indexStr);
-
       items.forEach(function (item) {
         const match = item.getAttribute("data-landmark") === targetIdx;
         const trigger = item.querySelector(".accordion-trigger");
         const panel = item.querySelector(".accordion-panel");
-
         const shouldOpen = match
           ? trigger.getAttribute("aria-expanded") !== "true"
           : false;
 
         item.classList.toggle("is-active", shouldOpen);
-        if (trigger) {
-          trigger.setAttribute("aria-expanded", shouldOpen ? "true" : "false");
-        }
-        if (panel) {
-          panel.hidden = !shouldOpen;
-        }
+        if (trigger) trigger.setAttribute("aria-expanded", shouldOpen ? "true" : "false");
+        if (panel) panel.hidden = !shouldOpen;
       });
     }
 
     triggers.forEach(function (trigger, pos) {
       trigger.addEventListener("click", function () {
-        const idx = trigger.getAttribute("data-landmark");
-        activateMoment(idx);
+        activateMoment(trigger.getAttribute("data-landmark"));
       });
 
       trigger.addEventListener("keydown", function (e) {
         let nextPos = null;
-        if (e.key === "ArrowDown") {
-          nextPos = (pos + 1) % triggers.length;
-        } else if (e.key === "ArrowUp") {
-          nextPos = (pos - 1 + triggers.length) % triggers.length;
-        } else if (e.key === "Home") {
-          nextPos = 0;
-        } else if (e.key === "End") {
-          nextPos = triggers.length - 1;
-        }
+        if (e.key === "ArrowDown") nextPos = (pos + 1) % triggers.length;
+        else if (e.key === "ArrowUp") nextPos = (pos - 1 + triggers.length) % triggers.length;
+        else if (e.key === "Home") nextPos = 0;
+        else if (e.key === "End") nextPos = triggers.length - 1;
 
         if (nextPos !== null) {
           e.preventDefault();
@@ -343,9 +370,79 @@
     });
   }
 
-  /**
-   * Aparición suave de secciones respetando prefers-reduced-motion.
-   */
+  function initBrewCalculator() {
+    const modal = document.getElementById("brewCalcModal");
+    const openBtn = document.getElementById("openBrewCalcBtn");
+    const closeBtn = document.getElementById("closeBrewCalcBtn");
+    const methodEl = document.getElementById("calcMethod");
+    const gramsEl = document.getElementById("calcCoffeeGrams");
+    const ratioEl = document.getElementById("calcRatio");
+    const ratioLabel = document.getElementById("calcRatioLabel");
+    const waterOut = document.getElementById("calcWaterOutput");
+    const grindOut = document.getElementById("calcGrindOutput");
+
+    if (!modal || !openBtn || !closeBtn) return;
+
+    const grindMap = {
+      "pour-over": "Molienda media-fina (como sal de mesa)",
+      "french-press": "Molienda gruesa (como sal marina)",
+      "espresso": "Molienda fina (como azúcar pulverizada)",
+      "cold-brew": "Molienda gruesa (extracción en frío 12–16 h)"
+    };
+
+    function updateCalc() {
+      const grams = Math.max(5, Math.min(150, Number(gramsEl.value) || 15));
+      const ratio = Number(ratioEl.value) || 16;
+      const water = Math.round(grams * ratio);
+      ratioLabel.textContent = "1:" + ratio;
+      waterOut.textContent = water + " ml";
+      grindOut.textContent = grindMap[methodEl.value] || grindMap["pour-over"];
+    }
+
+    function openModal() {
+      modal.hidden = false;
+      updateCalc();
+      closeBtn.focus();
+    }
+
+    function closeModal() {
+      modal.hidden = true;
+      openBtn.focus();
+    }
+
+    openBtn.addEventListener("click", openModal);
+    closeBtn.addEventListener("click", closeModal);
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !modal.hidden) closeModal();
+    });
+
+    methodEl.addEventListener("change", updateCalc);
+    gramsEl.addEventListener("input", updateCalc);
+    ratioEl.addEventListener("input", updateCalc);
+  }
+
+  function initShareButtons() {
+    const copyBtn = document.getElementById("copyLinkBtn");
+    if (!copyBtn) return;
+
+    copyBtn.addEventListener("click", function () {
+      const url = window.location.href.split("#")[0];
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () {
+          copyBtn.textContent = "¡Enlace copiado!";
+          setTimeout(function () {
+            copyBtn.textContent = "Copiar enlace";
+          }, 2200);
+        });
+      } else {
+        copyBtn.textContent = "¡Enlace listo!";
+      }
+    });
+  }
+
   function initScrollReveal() {
     const prefersReduced =
       window.matchMedia &&
@@ -384,9 +481,11 @@
     });
   }
 
-  // Inicialización
   applyConfiguration(cfg);
   initNavigation();
+  initTabs();
   initStoryExplorer();
+  initBrewCalculator();
+  initShareButtons();
   initScrollReveal();
 })();

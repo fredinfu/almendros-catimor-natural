@@ -4,7 +4,7 @@
  *
  * INSTRUCCIONES RÁPIDAS PARA EDITAR:
  * 1. Cambiá únicamente los valores entre comillas ("...") o true / false.
- * 2. Para actualizar precios o presentaciones, editá la lista `presentaciones`.
+ * 2. Para actualizar precios o presentaciones, editá la lista `presentaciones.opciones`.
  * 3. Para marcar el café como agotado temporalmente, cambiá `disponible: true` a `disponible: false`.
  * 4. Para reemplazar la etiqueta, el sticker o el logo, cambiá las rutas en `imagenes` (o reemplazá el archivo en ./assets/).
  * 5. Guardá el archivo y subí el cambio a GitHub; el sitio se actualizará automáticamente.
@@ -24,10 +24,10 @@ window.CATIMOR_NATURAL_CONFIG = {
     logoAlt: "Logo oficial de Almendros Coffee Co.",
     etiqueta: "./assets/catimor-label.jpg",
     etiquetaAlt:
-      "Etiqueta ilustrada de Catimor Natural de Almendros Coffee Co.: cielo naranja de amanecer, silueta urbana, gato con gafas y chaqueta azul petróleo sosteniendo una taza con la bandera de Honduras y vapor, junto al texto CATIMOR, FINCA LOS ALMENDROS, HN, COMAYAGUA",
+      "Etiqueta ilustrada de Catimor Natural de Almendros Coffee Co.: gato con gafas y chaqueta azul petróleo sosteniendo una taza con la bandera de Honduras bajo un cielo naranja urbano",
     sticker: "./assets/catimor-sticker.jpg",
     stickerAlt:
-      "Sticker ilustrado de Catimor de @almendroscoffeeco: gato con gafas y chaqueta azul petróleo junto a la ventana al amanecer sosteniendo una taza con la bandera de Honduras",
+      "Sticker ilustrado de Catimor de @almendroscoffeeco: gato con gafas y chaqueta azul petróleo junto a la ventana mirando la ciudad bajo el cielo naranja",
     ramaBotanica: "./assets/coffee-branch.png",
     ramaBotanicaAlt:
       "Grabado botánico oficial de rama de cafeto de Almendros Coffee Co."
@@ -45,89 +45,99 @@ window.CATIMOR_NATURAL_CONFIG = {
     ubicacion: "Honduras"
   },
 
-  // 4. IDENTIDAD Y ESPECIFICACIONES DEL PRODUCTO
+  // 4. PORTADA / IDENTIDAD DEL PRODUCTO
   producto: {
     marca: "Almendros Coffee Co.",
     nombre: "Catimor Natural",
-    subtitulo: "Fermentación anaeróbica · 120 horas",
+    subtitulo: "Anaeróbico · 120 horas",
     categoria: "Café de especialidad hondureño",
     tueste: "Tueste medio",
     tuesteCorto: "Medio",
-    fraseEntrada: "La misma ciudad. Una selva de fruta en la taza.",
-    botonHero: "Descubrí el Catimor",
+    fraseEntrada: "Exquisitas bayas con un acabado suave de chocolate oscuro.",
+    botonHero: "Explorar café",
     botonWhatsapp: "Consultar por WhatsApp"
   },
 
-  // 5. SECCIÓN 2: UNA SOLA VARIEDAD
-  variedadUnica: {
-    eyebrow: "Origen único · Finca Los Almendros",
-    titulo: "Una sola variedad",
-    descripcion:
-      "Una sola variedad de Finca Los Almendros, con el carácter frutal de un café natural.",
-    datos: [
-      {
-        etiqueta: "Variedad",
-        valor: "Catimor",
-        detalle: "Variedad única cultivada en Finca Los Almendros."
-      },
-      {
-        etiqueta: "Proceso",
-        valor: "Natural",
-        detalle: "Secado en cereza entera para conservar su carácter frutal."
-      },
-      {
-        etiqueta: "Fermentación",
-        valor: "120 horas",
-        detalle: "Fermentación anaeróbica controlada de 120 horas."
-      }
-    ]
+  // 5. PESTAÑAS DE CONTENIDO (CARACTERÍSTICAS / HISTORIA / SOSTENIBILIDAD)
+  pestanas: {
+    caracteristicas: {
+      notasSabor: [
+        "Exquisitas bayas azules",
+        "Acabado suave de chocolate oscuro",
+        "Cuerpo sedoso, dulzura limpia"
+      ],
+      procesoTitulo: "Proceso",
+      procesoTexto:
+        "Las cerezas enteras reposan en tanques sellados durante 120 horas de fermentación anaeróbica y luego se secan al sol en camas elevadas. El secado lento y uniforme preserva la intensidad de la fruta y un acabado similar al cacao.",
+      almacenamientoTitulo: "Almacenamiento",
+      almacenamientoItems: [
+        "Sin aditivos.",
+        "Almacenar en un lugar fresco y hermético.",
+        "Para mejor sabor, mantener en grano entero y moler justo antes de preparar."
+      ]
+    },
+    historia: {
+      subtituloOrigen: "Finca Los Almendros — San Luis, Comayagua, Honduras",
+      subtituloTueste: "Tostado por Almendros Coffee Co.",
+      texto:
+        "Nuestro café proviene de Finca Los Almendros, en las montañas de San Luis, Comayagua, bajo el cuidado del productor Fernando Padilla. La fermentación anaeróbica de 120 horas aporta una complejidad y profundidad excepcionales, resaltando notas intensas a bayas azules y un final suave a chocolate oscuro."
+    },
+    sostenibilidad: {
+      titulo: "Nuestro compromiso",
+      parrafo1:
+        "Trabajamos directamente con el origen para asegurar prácticas agrícolas responsables y un trato justo en cada cosecha. Este café se cultiva en altura siguiendo métodos tradicionales que respetan el entorno y cuidan la biodiversidad.",
+      parrafo2:
+        "Al elegir este Catimor Natural, apoyás la caficultura de especialidad hondureña y el trabajo dedicado de cada cosecha en Finca Los Almendros."
+    }
   },
 
-  // 6. SECCIÓN 3: PERFIL DE TAZA
-  perfilDeTaza: {
-    eyebrow: "Experiencia en taza",
-    titulo: "Perfil de taza",
-    descripcionPrincipal:
-      "Tiene la intensidad frutal de un café natural y el equilibrio de una fruta en su punto: el dulzor y la acidez se sienten juntos, y dan ganas de otro sorbo.",
-    notaTueste:
-      "Tostado en punto medio para acompañar cada mañana con cuerpo amable, dulzor claro y carácter frutal.",
-    destacados: [
-      {
-        titulo: "Carácter frutal",
-        detalle: "Intensidad frutal propia de un proceso natural trabajado con paciencia."
-      },
-      {
-        titulo: "Dulzor",
-        detalle: "Dulzor redondo que se siente desde el primer sorbo."
-      },
-      {
-        titulo: "Acidez en su punto",
-        detalle: "Equilibrio vivo que acompaña el dulzor y dan ganas de otro sorbo."
-      }
-    ]
-  },
+  // 6. FICHA DE ESPECIFICACIONES Y TRAZABILIDAD
+  especificaciones: [
+    { etiqueta: "Variedad", valor: "Catimor" },
+    { etiqueta: "Proceso", valor: "Natural" },
+    { etiqueta: "Fermentación", valor: "Anaeróbica 120 hrs" },
+    { etiqueta: "Tueste", valor: "Medio" },
+    { etiqueta: "Origen", valor: "San Luis, Comayagua" },
+    { etiqueta: "Altitud", valor: "1,250–1,300 msnm" }
+  ],
 
-  // 7. SECCIÓN 4: NUESTRA FINCA
   origen: {
-    eyebrow: "Origen real",
-    titulo: "Nuestra finca",
-    historiaFinca:
-      "La ciudad es el escenario de la historia ilustrada, pero el café nace en las montañas de San Luis, Comayagua. En Finca Los Almendros, bajo el cuidado de Fernando Padilla, este Catimor de cosecha 2026 crece entre 1,250 y 1,300 metros sobre el nivel del mar.",
-    declaracionOrigen: "Variedad única cultivada en Finca Los Almendros.",
     finca: "Finca Los Almendros",
     region: "San Luis, Comayagua, Honduras",
     productor: "Fernando Padilla",
     altitud: "1,250–1,300 msnm",
-    cosecha: "2026",
-    selloTrazabilidad: "San Luis, Comayagua · Cosecha 2026"
+    cosecha: "2026"
   },
 
-  // 8. SECCIÓN 5: UNA HISTORIA ILUSTRADA
+  // 7. MÉTODOS DE PREPARACIÓN
+  preparacion: {
+    titulo: "Métodos de preparación",
+    subtitulo: "Sacale todo el potencial a tu Catimor Natural con estas recetas base.",
+    metodos: [
+      {
+        nombre: "Pour Over",
+        receta: "15 g café • 250 g agua • 92–94 °C • 2:30–3:00.",
+        nota: "Molienda media-fina."
+      },
+      {
+        nombre: "AeroPress",
+        receta: "16 g café • 210 g agua • ~1:45 total.",
+        nota: "Molienda media · presión suave."
+      },
+      {
+        nombre: "Espresso",
+        receta: "18 g entrada • 36–40 g salida • 27–32 s.",
+        nota: "Bajá un poco la temperatura si el shot se siente ácido."
+      }
+    ]
+  },
+
+  // 8. HISTORIA ILUSTRADA (DE LA VENTANA A LA CALLE, SIN MARCADORES)
   historiaIlustrada: {
     eyebrow: "De la ventana a la calle",
     titulo: "Una historia ilustrada",
     relatoIntro:
-      "Desde la ventana, el gato mira la ciudad de siempre mientras el cielo se tiñe de naranja y el sol empieza a caer. Se pone los lentes y sale al mismo camino de edificios y cables de todos los días. No pasa nada: afuera tampoco perdona su taza de Catimor, y un sorbo le basta para sentir una selva de fruta en medio de la ciudad.",
+      "Desde la ventana, el gato mira la ciudad de siempre mientras el cielo se tiñe de naranja y el sol empieza a caer. Se pone los lentes y sale al mismo camino de edificios y cables de todos los días. No pasa nada: afuera tampoco perdona su taza de Catimor.",
     captionSticker: "Desde la ventana · @almendroscoffeeco",
     momentos: [
       {
@@ -149,17 +159,17 @@ window.CATIMOR_NATURAL_CONFIG = {
         titulo: "Su taza de Catimor",
         subtitulo: "El sorbo que no perdona",
         descripcion:
-          "Ya afuera, no se pierde su taza. Un sorbo de Catimor Natural le basta para transformar el paisaje urbano en una selva de fruta."
+          "Ya afuera, no se pierde su taza. Bayas azules, chocolate oscuro y un sorbo que convierte la tarde en su mejor momento del día."
       }
     ]
   },
 
-  // 9. SECCIÓN 6: LLEVATE TU CATIMOR (PRESENTACIONES Y PRECIOS DE VENTA)
+  // 9. PRESENTACIONES Y PRECIOS DE VENTA
   presentaciones: {
-    eyebrow: "Café de especialidad hondureño",
-    titulo: "Llevate tu Catimor",
+    eyebrow: "Llevate tu Catimor",
+    titulo: "¿Listo para probarlo en casa?",
     descripcion:
-      "Elegí la presentación que mejor va con tu rutina. Ambas conservan el tueste medio y la fermentación anaeróbica de 120 horas de esta cosecha 2026.",
+      "Elegí tu presentación de esta cosecha 2026 o abrí el asistente para calcular tu receta ideal.",
     enviosTitulo: "Envíos a nivel nacional en Honduras",
     enviosDetalle: "Las condiciones y el costo del envío se consultan directamente por WhatsApp.",
     botonSecundario: "Conocé Almendros Coffee Co.",
