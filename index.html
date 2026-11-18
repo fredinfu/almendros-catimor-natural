@@ -315,88 +315,43 @@
       <div class="container">
         <div class="section-header story-header">
           <p class="section-eyebrow section-eyebrow-light" data-config="historiaEyebrow">
-            El ritual de la mañana
+            De la ventana a la calle
           </p>
           <h2 class="section-title section-title-light" id="story-heading" data-config="historiaTitulo">Una historia ilustrada</h2>
           <p class="section-lead section-lead-light" data-config="relatoIntro">
-            El gato se levanta temprano, se sirve un café junto a la ventana y se pone los lentes antes de salir. Afuera lo esperan los mismos cables, los mismos edificios y el mismo camino de todos los días. No pasa nada. Lleva su Catimor, y un sorbo le basta para sentirse en medio de una selva de frutas.
+            Desde la ventana, el gato mira la ciudad de siempre mientras el cielo se tiñe de naranja y el sol empieza a caer. Se pone los lentes y sale al mismo camino de edificios y cables de todos los días. No pasa nada: afuera tampoco perdona su taza de Catimor, y un sorbo le basta para sentir una selva de fruta en medio de la ciudad.
           </p>
         </div>
 
         <div class="story-explorer-grid">
-          <!-- Etiqueta interactiva con capa separada de marcadores -->
+          <!-- Etiqueta ilustrada limpia, sin marcadores -->
           <div class="story-card-column">
-            <div class="interactive-card-wrapper" id="interactiveCardWrapper">
+            <figure class="interactive-card-wrapper">
               <div class="poster-mat card-mat-story">
-                <div class="landmark-stage">
-                  <img
-                    src="./assets/catimor-label.jpg"
-                    alt="Etiqueta ilustrada íntegra de Catimor Natural con tres momentos interactivos: el amanecer, el camino de siempre y el primer sorbo"
-                    width="1024"
-                    height="980"
-                    loading="lazy"
-                    decoding="async"
-                    class="catimor-label-img"
-                    data-config-img="etiqueta"
-                  >
-
-                  <!-- Capa separada para mantener los marcadores alineados al cambiar el ancho -->
-                  <div class="landmark-pins-layer" id="landmarkPinsLayer" aria-label="Tres momentos de la mañana en la ilustración">
-                    <button
-                      type="button"
-                      class="landmark-pin is-active"
-                      data-landmark="0"
-                      style="left: 34%; top: 22%;"
-                      aria-label="Momento 1: El amanecer en el cielo naranja"
-                      aria-pressed="true"
-                    >
-                      <span>1</span>
-                    </button>
-                    <button
-                      type="button"
-                      class="landmark-pin"
-                      data-landmark="1"
-                      style="left: 73%; top: 65%;"
-                      aria-label="Momento 2: El camino de siempre en la silueta urbana"
-                      aria-pressed="false"
-                    >
-                      <span>2</span>
-                    </button>
-                    <button
-                      type="button"
-                      class="landmark-pin"
-                      data-landmark="2"
-                      style="left: 47%; top: 69%;"
-                      aria-label="Momento 3: El primer sorbo junto a la taza y el vapor"
-                      aria-pressed="false"
-                    >
-                      <span>3</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card-toolbar">
-                <p class="toolbar-hint">Tocá un número o abrí cada momento del relato</p>
-                <button
-                  type="button"
-                  class="btn-toggle-pins"
-                  id="togglePinsBtn"
-                  aria-pressed="false"
+                <img
+                  src="./assets/catimor-label.jpg"
+                  alt="Etiqueta ilustrada íntegra de Catimor Natural: el gato con gafas y chaqueta azul petróleo ya afuera en la ciudad, con su taza humeante de Honduras bajo el cielo naranja"
+                  width="1024"
+                  height="980"
+                  loading="lazy"
+                  decoding="async"
+                  class="catimor-label-img"
+                  data-config-img="etiqueta"
                 >
-                  Ver arte sin marcadores
-                </button>
               </div>
-            </div>
+              <figcaption class="story-art-caption">
+                Afuera, en la ciudad · Etiqueta ilustrada de Catimor Natural
+              </figcaption>
+            </figure>
           </div>
 
-          <!-- Sticker junto a la ventana + Acordeón accesible de los tres momentos -->
+          <!-- Sticker junto a la ventana + Acordeón narrativo -->
           <div class="story-legend-column">
             <figure class="window-sticker-callout">
               <div class="window-sticker-frame">
                 <img
                   src="./assets/catimor-sticker.jpg"
-                  alt="Sticker ilustrado de Catimor de @almendroscoffeeco: gato con gafas y chaqueta azul petróleo junto a la ventana al amanecer sosteniendo una taza con la bandera de Honduras"
+                  alt="Sticker ilustrado de Catimor de @almendroscoffeeco: gato con gafas y chaqueta azul petróleo junto a la ventana mirando la ciudad bajo el cielo naranja"
                   width="1024"
                   height="1024"
                   loading="lazy"
@@ -406,12 +361,12 @@
                 >
               </div>
               <figcaption class="window-sticker-caption">
-                <strong data-config="captionSticker">La primera taza junto a la ventana · @almendroscoffeeco</strong>
-                <span>Así arranca la mañana antes de salir a la calle.</span>
+                <strong data-config="captionSticker">Desde la ventana · @almendroscoffeeco</strong>
+                <span>Antes de salir, la ciudad ya se asoma tras el vidrio.</span>
               </figcaption>
             </figure>
 
-            <div class="story-accordion" id="storyAccordion" role="region" aria-label="Tres momentos de la historia ilustrada">
+            <div class="story-accordion" id="storyAccordion" role="region" aria-label="Momentos de la historia ilustrada">
               <div class="accordion-item is-active" data-landmark="0">
                 <h3 class="accordion-heading">
                   <button
@@ -424,8 +379,8 @@
                   >
                     <span class="landmark-index">01</span>
                     <span class="accordion-title-group">
-                      <span class="landmark-name">El amanecer</span>
-                      <span class="landmark-sub">En el cielo naranja</span>
+                      <span class="landmark-name">Desde la ventana</span>
+                      <span class="landmark-sub">La ciudad al caer la tarde</span>
                     </span>
                     <span class="accordion-chevron" aria-hidden="true"></span>
                   </button>
@@ -437,7 +392,7 @@
                   aria-labelledby="accordion-trigger-0"
                 >
                   <p class="landmark-desc">
-                    El cielo naranja anuncia que el día apenas empieza. El gato se levanta temprano, se sirve su primera taza junto a la ventana y se pone los lentes antes de salir.
+                    Tras el vidrio, el cielo naranja anuncia que el sol empieza a caer. El gato observa los edificios y los cables de siempre antes de salir.
                   </p>
                 </div>
               </div>
@@ -455,7 +410,7 @@
                     <span class="landmark-index">02</span>
                     <span class="accordion-title-group">
                       <span class="landmark-name">El camino de siempre</span>
-                      <span class="landmark-sub">En la silueta urbana</span>
+                      <span class="landmark-sub">Afuera, en la misma ciudad</span>
                     </span>
                     <span class="accordion-chevron" aria-hidden="true"></span>
                   </button>
@@ -468,7 +423,7 @@
                   hidden
                 >
                   <p class="landmark-desc">
-                    Afuera lo esperan los mismos cables, los mismos edificios y el mismo camino de todos los días. La ciudad sigue su ritmo habitual.
+                    Con los lentes puestos, sale a recorrer las calles de todos los días. La rutina sigue igual, pero el ánimo cambia cuando lleva su café en mano.
                   </p>
                 </div>
               </div>
@@ -485,8 +440,8 @@
                   >
                     <span class="landmark-index">03</span>
                     <span class="accordion-title-group">
-                      <span class="landmark-name">El primer sorbo</span>
-                      <span class="landmark-sub">Junto a la taza y el vapor</span>
+                      <span class="landmark-name">Su taza de Catimor</span>
+                      <span class="landmark-sub">El sorbo que no perdona</span>
                     </span>
                     <span class="accordion-chevron" aria-hidden="true"></span>
                   </button>
@@ -499,7 +454,7 @@
                   hidden
                 >
                   <p class="landmark-desc">
-                    No pasa nada. Lleva su Catimor en la taza, y un sorbo le basta para sentirse en medio de una selva de frutas.
+                    Ya afuera, no se pierde su taza. Un sorbo de Catimor Natural le basta para transformar el paisaje urbano en una selva de fruta.
                   </p>
                 </div>
               </div>

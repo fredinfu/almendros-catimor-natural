@@ -124,32 +124,32 @@ window.CATIMOR_NATURAL_CONFIG = {
 
   // 8. SECCIÓN 5: UNA HISTORIA ILUSTRADA
   historiaIlustrada: {
-    eyebrow: "El ritual de la mañana",
+    eyebrow: "De la ventana a la calle",
     titulo: "Una historia ilustrada",
     relatoIntro:
-      "El gato se levanta temprano, se sirve un café junto a la ventana y se pone los lentes antes de salir. Afuera lo esperan los mismos cables, los mismos edificios y el mismo camino de todos los días. No pasa nada. Lleva su Catimor, y un sorbo le basta para sentirse en medio de una selva de frutas.",
-    captionSticker: "La primera taza junto a la ventana · @almendroscoffeeco",
+      "Desde la ventana, el gato mira la ciudad de siempre mientras el cielo se tiñe de naranja y el sol empieza a caer. Se pone los lentes y sale al mismo camino de edificios y cables de todos los días. No pasa nada: afuera tampoco perdona su taza de Catimor, y un sorbo le basta para sentir una selva de fruta en medio de la ciudad.",
+    captionSticker: "Desde la ventana · @almendroscoffeeco",
     momentos: [
       {
         numero: "01",
-        titulo: "El amanecer",
-        subtitulo: "En el cielo naranja",
+        titulo: "Desde la ventana",
+        subtitulo: "La ciudad al caer la tarde",
         descripcion:
-          "El cielo naranja anuncia que el día apenas empieza. El gato se levanta temprano, se sirve su primera taza junto a la ventana y se pone los lentes antes de salir."
+          "Tras el vidrio, el cielo naranja anuncia que el sol empieza a caer. El gato observa los edificios y los cables de siempre antes de salir."
       },
       {
         numero: "02",
         titulo: "El camino de siempre",
-        subtitulo: "En la silueta urbana",
+        subtitulo: "Afuera, en la misma ciudad",
         descripcion:
-          "Afuera lo esperan los mismos cables, los mismos edificios y el mismo camino de todos los días. La ciudad sigue su ritmo habitual."
+          "Con los lentes puestos, sale a recorrer las calles de todos los días. La rutina sigue igual, pero el ánimo cambia cuando lleva su café en mano."
       },
       {
         numero: "03",
-        titulo: "El primer sorbo",
-        subtitulo: "Junto a la taza y el vapor",
+        titulo: "Su taza de Catimor",
+        subtitulo: "El sorbo que no perdona",
         descripcion:
-          "No pasa nada. Lleva su Catimor en la taza, y un sorbo le basta para sentirse en medio de una selva de frutas."
+          "Ya afuera, no se pierde su taza. Un sorbo de Catimor Natural le basta para transformar el paisaje urbano en una selva de fruta."
       }
     ]
   },

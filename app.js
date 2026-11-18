@@ -287,36 +287,25 @@
   }
 
   /**
-   * Explorador interactivo de la etiqueta (Sección 5: Una historia ilustrada).
-   * Sincroniza los 3 puntos en capa separada con el acordeón accesible.
+   * Acordeón narrativo accesible (Sección 5: Una historia ilustrada).
    */
   function initStoryExplorer() {
-    const pins = Array.from(document.querySelectorAll(".landmark-pin"));
     const items = Array.from(document.querySelectorAll(".accordion-item"));
     const triggers = Array.from(document.querySelectorAll(".accordion-trigger"));
-    const pinsLayer = document.getElementById("landmarkPinsLayer");
-    const togglePinsBtn = document.getElementById("togglePinsBtn");
 
-    if (!pins.length || !items.length || !triggers.length) return;
+    if (!items.length || !triggers.length) return;
 
-    function activateMoment(indexStr, options) {
-      const opts = options || {};
+    function activateMoment(indexStr) {
       const targetIdx = String(indexStr);
-
-      pins.forEach(function (pin) {
-        const match = pin.getAttribute("data-landmark") === targetIdx;
-        pin.classList.toggle("is-active", match);
-        pin.setAttribute("aria-pressed", match ? "true" : "false");
-      });
 
       items.forEach(function (item) {
         const match = item.getAttribute("data-landmark") === targetIdx;
         const trigger = item.querySelector(".accordion-trigger");
         const panel = item.querySelector(".accordion-panel");
 
-        const shouldOpen = opts.toggle && match
+        const shouldOpen = match
           ? trigger.getAttribute("aria-expanded") !== "true"
-          : match;
+          : false;
 
         item.classList.toggle("is-active", shouldOpen);
         if (trigger) {
@@ -326,27 +315,12 @@
           panel.hidden = !shouldOpen;
         }
       });
-
-      if (opts.revealPins && pinsLayer && pinsLayer.classList.contains("is-hidden")) {
-        pinsLayer.classList.remove("is-hidden");
-        if (togglePinsBtn) {
-          togglePinsBtn.setAttribute("aria-pressed", "false");
-          togglePinsBtn.textContent = "Ver arte sin marcadores";
-        }
-      }
     }
-
-    pins.forEach(function (pin) {
-      pin.addEventListener("click", function () {
-        const idx = pin.getAttribute("data-landmark");
-        activateMoment(idx, { toggle: false, revealPins: true });
-      });
-    });
 
     triggers.forEach(function (trigger, pos) {
       trigger.addEventListener("click", function () {
         const idx = trigger.getAttribute("data-landmark");
-        activateMoment(idx, { toggle: true, revealPins: false });
+        activateMoment(idx);
       });
 
       trigger.addEventListener("keydown", function (e) {
@@ -367,16 +341,6 @@
         }
       });
     });
-
-    if (togglePinsBtn && pinsLayer) {
-      togglePinsBtn.addEventListener("click", function () {
-        const hidden = pinsLayer.classList.toggle("is-hidden");
-        togglePinsBtn.setAttribute("aria-pressed", hidden ? "true" : "false");
-        togglePinsBtn.textContent = hidden
-          ? "Mostrar marcadores"
-          : "Ver arte sin marcadores";
-      });
-    }
   }
 
   /**
